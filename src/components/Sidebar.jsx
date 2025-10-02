@@ -1,119 +1,134 @@
+import React from 'react'
+// import super from "./media.png";
+import logo from "./sidelogo.png";
 
-import { CiGrid41 } from "react-icons/ci";
-import { IoSettingsOutline } from "react-icons/io5";
-import { MdOutlineCategory } from "react-icons/md";
-import { RiAuctionLine } from "react-icons/ri";
-import { IoIosHeartEmpty } from "react-icons/io";
-// import { User1 } from "../hero/Hero";
-import { IoIosLogOut } from "react-icons/io";
-import { CgProductHunt } from "react-icons/cg";
-import { TbCurrencyDollar } from "react-icons/tb";
-import { FiUser } from "react-icons/fi";
-import { FaPlusCircle } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import {
+FaRegUserCircle
+} from "react-icons/fa";
 
-export const Sidebar = () => {
-  const location = useLocation();
-
-  const role = "admin";
-  const className = "flex items-center gap-3 mb-2 p-4 rounded-full";
-
+import { IoBookOutline } from "react-icons/io5";
+import { LuNotebookText } from "react-icons/lu";
+import classNames from "classnames"
+import { DASHBOARD_SIDEBAR, DASHBOARD_SIDEBAR_LINKS } from '../lib/constants/navigations';
+import { Link, useLocation } from 'react-router-dom';
+const linkClasses='flex items-center text-[#828282] gap-2 font-light px-4 p-1 hover:bg-neutral-700 hover:no-underline active:bg-neutral-600 rounded-sm text-base text-sm'
+function Sidebar() {
   return (
-    <>
-      <section className="sidebar flex flex-col justify-between h-full">
-        <div className="profile flex items-center text-center justify-center gap-8 flex-col mb-8">
-          {/* <img src={User1} alt="" className="w-32 h-32 rounded-full object-cover" /> */}
-          <div>
-            <Title className="capitalize">Sunil B.K</Title>
-            <Caption>example@gmail.com</Caption>
-          </div>
+    <div className='w-60 bg-[#1E1E1E] text-white '>
+        <div className='flex flex-row items-center mt-6 ml-2 gap-2'> 
+            <img src={logo} alt="Logo" className='w-12 h-12 '/>
+            <div>
+                <h2>IT360academy</h2>
+                <p className='text-[12px] text-gray-400'>Management</p>
+            </div>
+        </div>
+         {DASHBOARD_SIDEBAR.map((item)=>(
+            <div key={item.key}>
+                <Sidebars item={item}/>
+            </div>
+        ))}
+        {/* user management */}
+        <div className='flex items-center py-4  ml-4 gap-2'>
+            <FaRegUserCircle/>
+            <h2>User Management</h2>
+            
+        </div>
+        <div className=''>
+
+        {DASHBOARD_SIDEBAR_LINKS.slice(1,5).map((item)=>(
+            <div key={item.key}>
+                <Sidebarlink item={item}/>
+            </div>
+        ))}
         </div>
 
-        <div>
-          <CustomNavLink href="/dashboard" isActive={location.pathname === "/dashboard"} className={className}>
-            <span>
-              <CiGrid41 size={22} />
-            </span>
-            <span>Dashbaord</span>
-          </CustomNavLink>
+        {/* course management */}
 
-          {(role === "seller" || role === "admin") && (
-            <>
-              <CustomNavLink href="/product" isActive={location.pathname === "/product"} className={className}>
-                <span>
-                  <MdOutlineCategory size={22} />
-                </span>
-                <span>My Products</span>
-              </CustomNavLink>
-              <CustomNavLink href="/add" isActive={location.pathname === "/add"} className={className}>
-                <span>
-                  <FaPlusCircle size={22} />
-                </span>
-                <span>Create Product</span>
-              </CustomNavLink>
-
-              {/* do it  */}
-            </>
-          )}
-
-          {role === "admin" && (
-            <>
-              <CustomNavLink href="/userlist" isActive={location.pathname === "/userlist"} className={className}>
-                <span>
-                  <FiUser size={22} />
-                </span>
-                <span>All User</span>
-              </CustomNavLink>
-
-              <CustomNavLink href="/product/admin" isActive={location.pathname === "/product/admin"} className={className}>
-                <span>
-                  <CgProductHunt size={22} />
-                </span>
-                <span> All product List</span>
-              </CustomNavLink>
-
-              <CustomNavLink href="/category" isActive={location.pathname === "/category"} className={className}>
-                <span>
-                  <MdOutlineCategory size={22} />
-                </span>
-                <span>Categories</span>
-              </CustomNavLink>
-              <CustomNavLink href="/admin/income" isActive={location.pathname === "/admin/income"} className={className}>
-                <span>
-                  <TbCurrencyDollar size={22} />
-                </span>
-                <span>Income</span>
-              </CustomNavLink>
-            </>
-          )}
-
-          <CustomNavLink href="/winning-products" isActive={location.pathname === "/winning-products"} className={className}>
-            <span>
-              <RiAuctionLine size={22} />
-            </span>
-            <span>Winning Bids</span>
-          </CustomNavLink>
-          <CustomNavLink href="/favorites" isActive={location.pathname === "/favorites"} className={className}>
-            <span>
-              <IoIosHeartEmpty size={22} />
-            </span>
-            <span>My Favorites</span>
-          </CustomNavLink>
-          <CustomNavLink href="/profile" isActive={location.pathname === "/profile"} className={className}>
-            <span>
-              <IoSettingsOutline size={22} />
-            </span>
-            <span>Personal Profile</span>
-          </CustomNavLink>
-
-          <button className="flex items-center w-full gap-3 mt-4 bg-red-500 mb-3 hover:text-white p-4 rounded-full text-white">
-            <span>
-              <IoIosLogOut size={22} />
-            </span>
-            <span>Log Out</span>
-          </button>
+          <div className='flex items-center py-4  ml-4 gap-2'>
+            <IoBookOutline/>
+            <h2>Course Management</h2>
+            
         </div>
-      </section>
-    </>
-  );
-};
+        <div className=''>
+
+        {DASHBOARD_SIDEBAR_LINKS.slice(5,7).map((item)=>(
+            <div key={item.key}>
+                <Sidebarlink item={item}/>
+            </div>
+        ))}
+        </div>
+
+
+
+        {/* Assignment and Assessment */}
+                  <div className='flex items-center py-4  ml-4 gap-2'>
+            <LuNotebookText/>
+            <h2>Assignment & Assessment</h2>
+            
+        </div>
+        <div className=''>
+
+        {DASHBOARD_SIDEBAR_LINKS.slice(7,9).map((item)=>(
+            <div key={item.key}>
+                <Sidebarlink item={item}/>
+            </div>
+        ))}
+        </div>
+
+
+
+        {/* Message and Notification */}
+
+                <div className='flex items-center py-4  ml-4 gap-2'>
+            <LuNotebookText/>
+            <h2>Message & Notification</h2>
+            
+        </div>
+        <div className=''>
+
+        {DASHBOARD_SIDEBAR_LINKS.slice(9,12).map((item)=>(
+            <div key={item.key}>
+                <Sidebarlink item={item}/>
+            </div>
+        ))}
+        </div>
+
+
+
+
+        {/* super admin */}
+        <div className='flex items-center gap-2 mx-1'>
+            <img src={logo} />
+            <div>
+                <h1 className='text-sm'>Super-Admin</h1>
+                <p className='text-sm text-[#828282]'>m@example.com</p>
+            </div>
+        </div>
+
+        
+    
+      
+    </div>
+  )
+}
+
+export default Sidebar
+
+
+function Sidebarlink({item}){
+    const {pathname}=useLocation()
+    return(
+        <Link to={item.path} className={classNames(pathname==item.path ? "bg-neutral-700 text-white":"text-[#828282]",linkClasses)}>
+            {item.label}
+       </Link>
+    )
+}
+
+function Sidebars({item}){
+     const {pathname}=useLocation()
+    return(
+       <Link to={item.path} className={classNames(pathname==item.path ? "bg-neutral-700 text-white":"text-[#828282]",linkClasses)}>
+           <span className='text-xl'>{item.icon}</span> {item.label}
+       </Link>
+    )
+}
