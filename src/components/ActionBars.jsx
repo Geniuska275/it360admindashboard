@@ -8,7 +8,7 @@ import { IoCloseCircleSharp } from "react-icons/io5";
 import { CgAsterisk } from "react-icons/cg";
 import { Link } from 'react-router-dom';
 
-function ActionBar() {
+function ActionBars() {
     const [show,setShow]=useState(false)
 
 
@@ -18,7 +18,7 @@ function ActionBar() {
         <IoEllipsisVertical />
         </div>
         {show && <div className='w-[180px] h-[100px] p-4 z-10 shadow-md bg-white rounded-xl '>
-        <Link to={"/Student-Profile"}>
+        <Link to={"/Parent-Profile"}>
             <div className='flex items-center my-1 gap-2'>
                 <TbEyeStar className='text-xl'/>
                 <h5 className='text-md'>View Profile</h5>
@@ -28,15 +28,15 @@ function ActionBar() {
 
 
 <AlertDialog.Root>
-	<AlertDialog.Trigger>
+    <AlertDialog.Trigger>
          <div className='flex items-center my-1 gap-2'>
                 <MdBlockFlipped className='text-xl'/>
                 <h5  className='text-md'>Deactivate User</h5>
             </div>
 
 
-	</AlertDialog.Trigger>
-	<AlertDialog.Content maxWidth="800px" maxHeight="450px">
+    </AlertDialog.Trigger>
+    <AlertDialog.Content maxWidth="800px" maxHeight="450px">
         <div className='flex justify-between items-center mx-5'>
             <h2 className='font-bold'>
               Are you sure you want to deactivate this student?
@@ -45,7 +45,7 @@ function ActionBar() {
         <AlertDialog.Cancel>
       <IoCloseCircleSharp className='text-xl' />
 
-			</AlertDialog.Cancel>
+            </AlertDialog.Cancel>
 
         </div>
          <h3 className='text-md mx-5'>
@@ -59,8 +59,8 @@ function ActionBar() {
          <button className='border  bg-black py-2 px-4 rounded-xl border-[#dddddd] text-white'> Deactivate</button>
                </div>
 
-		
-	</AlertDialog.Content>
+        
+    </AlertDialog.Content>
 </AlertDialog.Root>
 
 
@@ -73,21 +73,21 @@ function ActionBar() {
 
 
 <AlertDialog.Root>
-	<AlertDialog.Trigger>
+    <AlertDialog.Trigger>
 
             <div className='flex items-center my-1  gap-2'>
                 <CiEdit className='text-xl'/>
                 <h5  className='text-md'>Edit profile</h5>
             </div>
 
-	</AlertDialog.Trigger>
-	<AlertDialog.Content maxWidth="800px" maxHeight="450px">
+    </AlertDialog.Trigger>
+    <AlertDialog.Content maxWidth="800px" maxHeight="450px">
         <div className='flex justify-between items-center mx-5'>
             <h2 className='font-bold'>Edit Student Profile</h2>
         <AlertDialog.Cancel>
       <IoCloseCircleSharp className='text-xl' />
 
-			</AlertDialog.Cancel>
+            </AlertDialog.Cancel>
 
         </div>
            <div className='flex justify-center items-center'>
@@ -215,8 +215,8 @@ function ActionBar() {
 
             </form>
            </div>
-		
-	</AlertDialog.Content>
+        
+    </AlertDialog.Content>
 </AlertDialog.Root>
 
 
@@ -226,4 +226,4 @@ function ActionBar() {
   )
 }
 
-export default ActionBar
+export default ActionBars

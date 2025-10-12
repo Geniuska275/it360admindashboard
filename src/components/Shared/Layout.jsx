@@ -8,7 +8,7 @@ function Layout() {
     <div className='flex flex-row h-screen w-screen'>  
         <Sidebar/>
          <div className='flex flex-col flex-1 bg-gray-100 overflow-auto w-full'> 
-        <Header/>
+        {/* <Header/> */}
         <Outlet />  
         </div> 
     

@@ -1,9 +1,10 @@
 import { Select, Table, TextField } from '@radix-ui/themes'
 import React from 'react'
 import ActionBar from '../components/ActionBar'
+import { IoIosArrowForward } from "react-icons/io";
 
 
-
+import { MdOutlineSpaceDashboard } from "react-icons/md";
 function ManageStudents() {
 
     const students=[
@@ -86,6 +87,20 @@ function ManageStudents() {
     ]
 
   return (
+
+    <div>
+      <div className=' bg-white  py-4 shadow-md w-full top-0 sticky z-10'>
+            
+            <div className='flex gap-3  items-center px-1'>
+              <MdOutlineSpaceDashboard className='text-xl text-[#71717A]' />
+              <h2 className='border-l px-2 text-[#71717A]'>User Management </h2>
+              <IoIosArrowForward/>
+              <h2 className=' px-2 text-[#71717A]'>Manage Student</h2>
+
+            </div>
+            
+          </div>
+
     <div className='p-4 bg-white flex-1'>
       <h1 className='text-xl font-bold capitalize'>manage students</h1>
       <div className='my-5 flex flex-row justify-between items-center '>
@@ -157,7 +172,7 @@ function ManageStudents() {
   <Table.Body>
 
       {students.map((item, index)=>(
-    <Table.Row key={item.id}> 
+        <Table.Row key={item.id}> 
         <Table.RowHeaderCell>{index + 1}</Table.RowHeaderCell>
         <Table.Cell>
           <div className='flex gap-2 items-center'>
@@ -199,6 +214,7 @@ function ManageStudents() {
          <button className='border py-2 px-4 rounded border-[#dddddd] text-[#373737]'> Next</button>
         </div>
       </div>
+    </div>
     </div>
   )
 }

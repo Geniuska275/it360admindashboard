@@ -8,6 +8,7 @@ import { PiGraduationCapDuotone } from "react-icons/pi";
 import CourseChart from './Shared/CourseChart';
 import Example from './Shared/Example';
 import { FaStar } from "react-icons/fa6";
+import Header from './Header';
 
 function Dashboard() {
    const courses=[
@@ -145,6 +146,7 @@ function Dashboard() {
 
   return (
     <div>
+      <Header/>
       <div className='flex justify-between items-center py-4 px-4'>
         <h1 className='font-bold'>Dashboard</h1>
           <Buttons>Add New Course</Buttons>

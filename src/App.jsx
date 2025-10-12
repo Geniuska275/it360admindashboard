@@ -18,6 +18,8 @@ import GradeAssignment from './pages/GradeAssignment.jsx';
 import Announcements from './pages/Announcements.jsx';
 import Notification from './pages/Notification.jsx';
 import Message from './pages/Message.jsx';
+import StudentProfile from './pages/StudentProfile.jsx';
+import ParentProfile from './pages/ParentProfile.jsx';
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
           <Route path="/" element={<Layout />}>
           <Route index  element={<Dashboard/>}/>
           <Route path='/Manage-Student'  element={<ManageStudents/>}/>
+          <Route path='/Student-Profile' element={<StudentProfile/>}/>
+          <Route path='/Parent-Profile' element={<ParentProfile/>}/>
           <Route path='/Manage-Parent'  element={<ManageParents/>}/>
           <Route path='/Manage-Instructors'  element={<ManageInstructors/>}/>
           <Route path='/Administrators'  element={<AdminStrators/>}/>
