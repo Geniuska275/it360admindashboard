@@ -20,6 +20,9 @@ import Notification from './pages/Notification.jsx';
 import Message from './pages/Message.jsx';
 import StudentProfile from './pages/StudentProfile.jsx';
 import ParentProfile from './pages/ParentProfile.jsx';
+import Instructor from './pages/Instructor.jsx';
+import AdminStrator from './pages/Administrator.jsx';
+import Course from './pages/course.jsx';
 
 
 function App() {
@@ -35,6 +38,12 @@ function App() {
           <Route path='/Manage-Student'  element={<ManageStudents/>}/>
           <Route path='/Student-Profile' element={<StudentProfile/>}/>
           <Route path='/Parent-Profile' element={<ParentProfile/>}/>
+          <Route path='/Instructor' element={<Instructor/>}/>
+          <Route path='/Course' element={<Course/>}/>
+
+          <Route path='/Administrator' element={<AdminStrator/>}/>
+
+
           <Route path='/Manage-Parent'  element={<ManageParents/>}/>
           <Route path='/Manage-Instructors'  element={<ManageInstructors/>}/>
           <Route path='/Administrators'  element={<AdminStrators/>}/>

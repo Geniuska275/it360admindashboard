@@ -11,6 +11,7 @@ import { IoIosArrowForward } from "react-icons/io";
 
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import ActionBars from '../components/ActionBars';
+import { Link } from 'react-router-dom';
 function ManageParents() {
 
     const students=[
@@ -99,7 +100,9 @@ function ManageParents() {
             
             <div className='flex gap-3  items-center px-1'>
               <MdOutlineSpaceDashboard className='text-xl text-[#71717A]' />
+              <Link to="/">
               <h2 className='border-l px-2 text-[#71717A]'>User Management </h2>
+              </Link>
               <IoIosArrowForward/>
               <h2 className=' px-2 text-[#71717A]'>Manage Parent</h2>
 

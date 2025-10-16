@@ -72,7 +72,9 @@ function StudentProfile() {
                              <MdOutlineSpaceDashboard className='text-xl text-[#71717A]' />
                              <h2 className='border-l px-2 text-[#71717A]'>User Management </h2>
                              <IoIosArrowForward/>
+                             <Link to="/Manage-Student">
                              <h2 className=' px-2 text-[#71717A]'>Manage Student</h2>
+                             </Link>
                                <IoIosArrowForward/>
                              <h2 className=' px-2 text-black font-bold'>Benjamin</h2>
                

@@ -8,7 +8,7 @@ import { IoCloseCircleSharp } from "react-icons/io5";
 import { CgAsterisk } from "react-icons/cg";
 import { Link } from 'react-router-dom';
 
-function ActionBar() {
+function ActionBar({type}) {
     const [show,setShow]=useState(false)
 
 
@@ -18,7 +18,7 @@ function ActionBar() {
         <IoEllipsisVertical />
         </div>
         {show && <div className='w-[180px] h-[100px] p-4 z-10 shadow-md bg-white rounded-xl '>
-        <Link to={"/Student-Profile"}>
+        <Link to={ type=="instructor"? "/Instructor":"/Student-Profile"}>
             <div className='flex items-center my-1 gap-2'>
                 <TbEyeStar className='text-xl'/>
                 <h5 className='text-md'>View Profile</h5>
