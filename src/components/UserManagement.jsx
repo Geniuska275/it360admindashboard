@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function UserManagement() {
-  return (
-    <div>UserManagement</div>
-  )
+  return <div>UserManagement</div>;
 }
 
-export default UserManagement
+export default UserManagement;

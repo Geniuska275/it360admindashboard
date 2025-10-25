@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function GradeAssignment() {
-  return (
-    <div>GradeAssignment</div>
-  )
+  return <div>GradeAssignment</div>;
 }
 
-export default GradeAssignment
+export default GradeAssignment;
