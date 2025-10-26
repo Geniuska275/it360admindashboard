@@ -1,6 +1,16 @@
-import React from 'react'
-import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer,Rectangle, Tooltip, XAxis, YAxis } from "recharts"
-import Buttons from '../Buttons'
+import React from 'react';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Rectangle,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+import Buttons from '../Buttons';
 const data = [
   {
     name: ' Jan',
@@ -40,17 +50,17 @@ const data = [
   },
   {
     name: 'July',
-      Enrolled: 9490,
-      Graduated: 4300,
+    Enrolled: 9490,
+    Graduated: 4300,
     amt: 2100,
   },
-   {
+  {
     name: 'Aug',
     Enrolled: 8490,
     Graduated: 4300,
     amt: 2100,
   },
-   {
+  {
     name: 'Sept',
     Enrolled: 12090,
     Graduated: 11300,
@@ -79,36 +89,42 @@ const data = [
 function CourseChart() {
   return (
     <div className='bg-white h-[30rem] mt-5 p-4 rounded-sm mx-4 border border-gray-200'>
-       <div className='flex justify-between items-center mx-5 my-4'>
-            <strong>Courses</strong>
-            <Buttons>Yearly</Buttons>
-          </div>
-    
-      <ResponsiveContainer width="100%" height="85%">
-           <BarChart
-             width={500}
-             height={300}
-             data={data}
-             margin={{
-               top: 5,
-               right: 30,
-               left: 20,
-               bottom: 5,
-             }}
-           >
-             <CartesianGrid strokeDasharray="3 3" />
-             <XAxis dataKey="name" />
-             <YAxis />
-             <Tooltip />
-             <Legend />
-             <Bar dataKey="Enrolled" fill="#E5F5ED" activeBar={<Rectangle fill="#009B4D" stroke="#009B4D" />} />
-             <Bar dataKey="Graduated" fill="#009B4D" activeBar={<Rectangle fill="#E5F5ED" stroke="purple" />} />
-           </BarChart>
-         </ResponsiveContainer>
+      <div className='flex justify-between items-center mx-5 my-4'>
+        <strong>Courses</strong>
+        <Buttons>Yearly</Buttons>
+      </div>
 
-    
-          </div>
-  )
+      <ResponsiveContainer width='100%' height='85%'>
+        <BarChart
+          width={500}
+          height={300}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray='3 3' />
+          <XAxis dataKey='name' />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar
+            dataKey='Enrolled'
+            fill='#E5F5ED'
+            activeBar={<Rectangle fill='#009B4D' stroke='#009B4D' />}
+          />
+          <Bar
+            dataKey='Graduated'
+            fill='#009B4D'
+            activeBar={<Rectangle fill='#E5F5ED' stroke='purple' />}
+          />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
 }
 
-export default CourseChart
+export default CourseChart;
