@@ -4,6 +4,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import Coursedetails from './coursedetails';
 import Modules from './modules';
 import Students from './Students';
+import Resources from './Resources';
 
 function Course() {
     const [active,setActive]=useState("Course Details")
@@ -47,9 +48,11 @@ function Course() {
             {active=="Modules" && (
                 <Modules/>
             )}
-
-        {active=="Students" && (
+            {active=="Students" && (
                 <Students/>
+            )}
+            {active=="Resources" && (
+                <Resources/>
             )}
         
 
