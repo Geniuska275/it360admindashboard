@@ -1,13 +1,23 @@
-import React from 'react'
+import React from 'react';
+import { Button as ShadcnButton } from './ui/button';
 
-function Button({children,onCliick,width}) {
+function Button({
+  children,
+  onClick,
+  width,
+  variant = 'default',
+  size = 'default',
+}) {
   return (
-
-        <button className={`bg-[#FF6500] w-[${width}] font-lato font-bold shadow-md text-white px-6 py-2 rounded hover:bg-[#FF6500] cursor-pointer`} onClick={onCliick}>
-            {children}
-        </button>
-
-  )
+    <ShadcnButton
+      variant={variant}
+      size={size}
+      onClick={onClick}
+      className={width ? `w-[${width}]` : ''}
+    >
+      {children}
+    </ShadcnButton>
+  );
 }
 
-export default Button
+export default Button;

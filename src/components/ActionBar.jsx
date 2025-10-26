@@ -1,229 +1,61 @@
-import React, { useState } from 'react'
-import { IoEllipsisVertical } from "react-icons/io5";
-import { TbEyeStar } from "react-icons/tb";
-import { CiEdit } from "react-icons/ci";
-import { MdBlockFlipped } from "react-icons/md";
-import { AlertDialog, Button, Flex, Select } from '@radix-ui/themes';
-import { IoCloseCircleSharp } from "react-icons/io5";
-import { CgAsterisk } from "react-icons/cg";
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { IoEllipsisVertical } from 'react-icons/io5';
+import { TbEyeStar } from 'react-icons/tb';
+import ViewProgressDialog from './Course/modules/ViewProgressDialog';
 
-function ActionBar({type}) {
-    const [show,setShow]=useState(false)
+function ActionBar({ type, student }) {
+  const [show, setShow] = useState(false);
+  const [showProgressDialog, setShowProgressDialog] = useState(false);
+  const menuRef = useRef(null);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShow(false);
+      }
+    };
+
+    if (show) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [show]);
+
+  const handleViewProgress = () => {
+    setShowProgressDialog(true);
+    setShow(false);
+  };
 
   return (
-    <div>
-       <div className='bg-[#E0E0E0] w-8 h-8 rounded flex justify-center items-center' onClick={()=>setShow(!show)}>
+    <div className='relative' ref={menuRef}>
+      <div
+        className='bg-[#E0E0E0] w-8 h-8 rounded flex justify-center items-center cursor-pointer'
+        onClick={() => setShow(!show)}
+      >
         <IoEllipsisVertical />
+      </div>
+      {show && (
+        <div className='absolute right-0 mt-2 w-[180px] p-4 z-[9999] shadow-lg bg-white rounded-xl border border-gray-200'>
+          <div 
+            className='flex items-center my-1 gap-2 hover:bg-gray-100 p-2 rounded cursor-pointer'
+            onClick={handleViewProgress}
+          >
+            <TbEyeStar className='text-xl' />
+            <h5 className='text-md'>View Progress</h5>
+          </div>
         </div>
-        {show && <div className='w-[180px] h-[100px] p-4 z-10 shadow-md bg-white rounded-xl '>
-        <Link to={ type=="instructor"? "/Instructor":"/Student-Profile"}>
-            <div className='flex items-center my-1 gap-2'>
-                <TbEyeStar className='text-xl'/>
-                <h5 className='text-md'>View Profile</h5>
-            </div>
-           
-        </Link>
-
-
-<AlertDialog.Root>
-	<AlertDialog.Trigger>
-         <div className='flex items-center my-1 gap-2'>
-                <MdBlockFlipped className='text-xl'/>
-                <h5  className='text-md'>Deactivate User</h5>
-            </div>
-
-
-	</AlertDialog.Trigger>
-	<AlertDialog.Content maxWidth="800px" maxHeight="450px">
-        <div className='flex justify-between items-center mx-5'>
-            <h2 className='font-bold'>
-              Are you sure you want to deactivate this student?
-
-            </h2>
-        <AlertDialog.Cancel>
-      <IoCloseCircleSharp className='text-xl' />
-
-			</AlertDialog.Cancel>
-
-        </div>
-         <h3 className='text-md mx-5'>
-             This will restrict their access to all courses and features until reactivated.
-
-            </h3>
-           
-               <div className='flex gap-2 mt-2 ml-[500px]'>
-                <button className='border py-2 px-4 rounded-xl border-[#dddddd] text-[#373737]'> Cancel</button>
-        
-         <button className='border  bg-black py-2 px-4 rounded-xl border-[#dddddd] text-white'> Deactivate</button>
-               </div>
-
-		
-	</AlertDialog.Content>
-</AlertDialog.Root>
-
-
-
-
-
-
-
-
-
-
-<AlertDialog.Root>
-	<AlertDialog.Trigger>
-
-            <div className='flex items-center my-1  gap-2'>
-                <CiEdit className='text-xl'/>
-                <h5  className='text-md'>Edit profile</h5>
-            </div>
-
-	</AlertDialog.Trigger>
-	<AlertDialog.Content maxWidth="800px" maxHeight="450px">
-        <div className='flex justify-between items-center mx-5'>
-            <h2 className='font-bold'>Edit Student Profile</h2>
-        <AlertDialog.Cancel>
-      <IoCloseCircleSharp className='text-xl' />
-
-			</AlertDialog.Cancel>
-
-        </div>
-           <div className='flex justify-center items-center'>
-
-            <form className='w-[700px] h-[300px] border border-[#dddddd]  p-2 rounded mx-5 my-3'>
-                <div className='flex justify-between items-center gap-2'>
-
-                <div className=''>
-                    <div className='mb-1'>
-                        <div className='flex gap-1 items-center'>
-                            <h2 className='font-bold text-sm text-[#373737]'>FirstName</h2>
-                            <CgAsterisk className='text-red-600' />
-
-                        </div>
-                        <input 
-                        placeholder='Enter Firstname...'
-                        className='border border-[#dddddd] py-1 text-md rounded px-[60px]'/>
-
-
-                    </div>
-                    <div className='mb-1'>
-                        <div className='flex gap-1 items-center'>
-                            <h2 className='font-bold text-sm text-[#373737]'>Email Address</h2>
-                            <CgAsterisk className='text-red-600' />
-
-                        </div>
-                        <input className='border border-[#dddddd] py-1  rounded px-[60px]'/>
-                        
-
-                    </div>
-                    <div className='mb-1'>
-                         <div className='flex gap-1 items-center'>
-                            <h2 className='font-bold text-sm text-[#373737]'>Date of Birth</h2>
-                            <CgAsterisk className='text-red-600' />
-
-                        </div>
-                        <input className='border border-[#dddddd] py-1  rounded px-[60px]'/>
-                        
-
-                    </div>
-                    <div className='mb-1'>
-                         <div className='flex gap-1 items-center'>
-                            <h2 className='font-bold text-sm text-[#373737]'>Nationality</h2>
-                            <CgAsterisk className='text-red-600' />
-
-                        </div>
-                        <input className='border border-[#dddddd] py-1  rounded px-[60px]'/>
-                        
-
-                    </div>
-
-                </div>
-
-                <div>
-                    <div className='my-1'>
-                          <div className='flex gap-1 items-center'>
-                            <h2 className='font-bold text-sm text-[#373737]'>Last Name</h2>
-                            <CgAsterisk className='text-red-600' />
-
-                        </div>
-                        <input className='border border-[#dddddd] py-1 rounded px-[60px]'/>
-
-                    </div>
-                    <div className='my-1'>
-                       <div className='flex gap-1 items-center'>
-                            <h2 className='font-bold text-sm text-[#373737]'>Phone Number</h2>
-                            <CgAsterisk className='text-red-600' />
-
-                        </div>
-                        <input className='border border-[#dddddd] py-1 rounded px-[60px]'/>
-
-                    </div>
-                    <div className='my-1'>
-                        <div className='flex gap-1 items-center'>
-                            <h2 className='font-bold text-sm text-[#373737]'>Gender</h2>
-                            <CgAsterisk className='text-red-600' />
-
-                        </div>
-                        {/* <input className='border border-[#dddddd] py-1 rounded px-[50px]'/> */}
-                          <Select.Root defaultValue="male" className='border border-[#dddddd] py-1 rounded w-[300px]'>
-                                   <Select.Trigger />
-                                  <Select.Content>
-                                    <Select.Group>
-                                    <Select.Label>select Gender</Select.Label>
-                                    <Select.Item value="male">male</Select.Item>
-                                    <Select.Item value="female">female</Select.Item>
-                                   
-                                </Select.Group>
-                                
-
-                            </Select.Content>
-                        </Select.Root>
-
-                    </div>
-                    <div className='my-1'>
-                       <div className='flex gap-1 items-center'>
-                            <h2 className='font-bold text-sm text-[#373737]'>Marital Status</h2>
-                            <CgAsterisk className='text-red-600' />
-
-                        </div>
-                           <Select.Root defaultValue="married" className='border border-[#dddddd] py-1 rounded w-[300px]'>
-                                   <Select.Trigger />
-                                  <Select.Content>
-                                    <Select.Group>
-                                    <Select.Label>Status</Select.Label>
-                                    <Select.Item value="single">single</Select.Item>
-                                    <Select.Item value="married">married</Select.Item>
-                                    
-                                </Select.Group>
-                                
-
-                            </Select.Content>
-                        </Select.Root>
-                    </div>
-
-                </div>
-
-
-                        </div>
-               <div className='flex gap-2 mt-2 ml-[500px]'>
-                <button className='border py-2 px-4 rounded-xl border-[#dddddd] text-[#373737]'> Cancel</button>
-        
-         <button className='border  bg-black py-2 px-4 rounded-xl border-[#dddddd] text-white'> Save</button>
-               </div>
-
-            </form>
-           </div>
-		
-	</AlertDialog.Content>
-</AlertDialog.Root>
-
-
-
-        </div>}
+      )}
+      
+      <ViewProgressDialog 
+        isOpen={showProgressDialog}
+        onClose={() => setShowProgressDialog(false)}
+        student={student}
+      />
     </div>
-  )
+  );
 }
 
-export default ActionBar
+export default ActionBar;

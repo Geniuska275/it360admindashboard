@@ -1,12 +1,84 @@
-# React + Vite
+# IT360academy Admin Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React admin dashboard built with Vite, Tailwind CSS, and shadcn/ui components.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern UI**: Built with shadcn/ui components and Tailwind CSS
+- **Responsive Design**: Mobile-first approach with responsive layouts
+- **Design System**: Consistent components and styling throughout
+- **Code Quality**: ESLint and Prettier for code formatting and linting
 
-## Expanding the ESLint configuration
+## Development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js 18+ 
+- pnpm (recommended) or npm
+
+### Getting Started
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
+```
+
+## Code Formatting
+
+This project uses Prettier for consistent code formatting.
+
+### Available Scripts
+
+```bash
+# Format all files
+pnpm format
+
+# Check formatting without making changes
+pnpm format:check
+
+# Lint code
+pnpm lint
+```
+
+### VS Code Integration
+
+The project includes VS Code settings for automatic formatting on save. Make sure you have the Prettier extension installed.
+
+## Tech Stack
+
+- **React 19** - UI library
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Component library
+- **Radix UI** - Headless UI primitives
+- **React Router** - Client-side routing
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable components
+│   ├── ui/             # shadcn/ui components
+│   └── Shared/         # Shared components
+├── pages/              # Page components
+├── lib/                # Utilities and constants
+└── assets/             # Static assets
+```
+
+## Contributing
+
+1. Follow the existing code style
+2. Use Prettier for formatting
+3. Run ESLint before committing
+4. Follow the design system guidelines
