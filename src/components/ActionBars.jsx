@@ -14,7 +14,7 @@ function ActionBars({ type }) {
   const [show, setShow] = useState(false);
 
   return (
-    <div>
+    <div className='relative'>
       <div
         className='bg-[#E0E0E0] w-8 h-8 rounded flex justify-center items-center'
         onClick={() => setShow(!show)}
@@ -22,7 +22,7 @@ function ActionBars({ type }) {
         <IoEllipsisVertical />
       </div>
       {show && (
-        <div className='w-[180px] h-[100px] p-4 z-10 shadow-md bg-white rounded-xl '>
+        <div  className='absolute right-0 top-10 w-[180px] min-h-[120px] p-2 z-[99999] shadow-xl bg-white rounded-xl border border-[#dddddd]' >
           <Link to={type == 'Admin' ? '/Administrator' : '/Parent-Profile'}>
             <div className='flex items-center my-1 gap-2'>
               <TbEyeStar className='text-xl' />
@@ -42,9 +42,7 @@ function ActionBars({ type }) {
                 <h2 className='font-bold'>
                   Are you sure you want to deactivate this student?
                 </h2>
-                <AlertDialog.Cancel>
-                  <IoCloseCircleSharp className='text-xl' />
-                </AlertDialog.Cancel>
+                
               </div>
               <h3 className='text-md mx-5'>
                 This will restrict their access to all courses and features

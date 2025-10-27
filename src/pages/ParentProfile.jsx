@@ -99,9 +99,7 @@ function ParentProfile() {
                   <h2 className='font-bold'>
                     Are you sure you want to deactivate this Parent?
                   </h2>
-                  <AlertDialog.Cancel>
-                    <IoCloseCircleSharp className='text-xl' />
-                  </AlertDialog.Cancel>
+                 
                 </div>
                 <h3 className='text-md mx-5'>
                   This will restrict their access to all courses and features
@@ -109,10 +107,13 @@ function ParentProfile() {
                 </h3>
 
                 <div className='flex gap-2 mt-2 ml-[500px]'>
+                  <AlertDialog.Cancel>
+
                   <button className='border py-2 px-4 rounded-xl border-[#dddddd] text-[#373737]'>
                     {' '}
                     Cancel
                   </button>
+                  </AlertDialog.Cancel>
 
                   <button className='border  bg-black py-2 px-4 rounded-xl border-[#dddddd] text-white'>
                     {' '}
@@ -134,9 +135,7 @@ function ParentProfile() {
                   <h2 className='font-bold'>
                     Are you sure you want to activate this Parent?
                   </h2>
-                  <AlertDialog.Cancel>
-                    <IoCloseCircleSharp className='text-xl' />
-                  </AlertDialog.Cancel>
+                 
                 </div>
                 <h3 className='text-md mx-5'>
                   This will give access to all courses and features until
@@ -144,10 +143,12 @@ function ParentProfile() {
                 </h3>
 
                 <div className='flex gap-2 mt-2 ml-[500px]'>
+                  <AlertDialog.Cancel>
                   <button className='border py-2 px-4 rounded-xl border-[#dddddd] text-[#373737]'>
                     {' '}
                     Cancel
                   </button>
+                  </AlertDialog.Cancel>
 
                   <button className='border  bg-black py-2 px-4 rounded-xl border-[#dddddd] text-white'>
                     {' '}
