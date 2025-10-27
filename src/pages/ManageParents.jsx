@@ -1,12 +1,50 @@
 import { Select, Table, TextField } from '@radix-ui/themes';
-import React from 'react';
+import React, { useState } from 'react';
 import ActionBar from '../components/ActionBar';
 import { IoIosArrowForward } from 'react-icons/io';
 
 import { MdOutlineSpaceDashboard } from 'react-icons/md';
 import ActionBars from '../components/ActionBars';
 import { Link } from 'react-router-dom';
+import Button from '@/components/Button';
 function ManageParents() {
+    const [selectedRows, setSelectedRows] = useState(new Set());
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
+
+
+    
+    // Row selection handlers
+    const handleSelectRow = courseId => {
+      const newSelected = new Set(selectedRows);
+      if (newSelected.has(courseId)) {
+        newSelected.delete(courseId);
+      } else {
+      newSelected.add(courseId);
+    }
+    setSelectedRows(newSelected);
+  };
+  
+  const handleSelectAll = () => {
+    if (selectedRows.size === currentCourses.length) {
+      setSelectedRows(new Set());
+    } else {
+      setSelectedRows(new Set(currentCourses.map(course => course.id)));
+    }
+  };
+  
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  
   const students = [
     {
       id: 1,
@@ -91,6 +129,11 @@ function ManageParents() {
     },
   ];
 
+  // Pagination logic
+const totalPages = Math.ceil(students.length / itemsPerPage);
+const startIndex = (currentPage - 1) * itemsPerPage;
+const endIndex = startIndex + itemsPerPage;
+const currentCourses = students.slice(startIndex, endIndex);
   return (
     <div>
       <div className=' bg-white  py-4 shadow-md w-full top-0 sticky z-10'>
@@ -154,45 +197,85 @@ function ManageParents() {
             </Select.Root>
           </div>
         </div>
-
-        <div className='mt-6 relative'>
-          <Table.Root variant='surface'>
+        {/* Table Section */}
+        <div className='bg-white rounded-lg shadow-sm border border-[#dddddd] overflow-hidden'>
+          <Table.Root variant='surface' className='[&_td]:py-4 [&_th]:py-4'>
             <Table.Header>
               <Table.Row>
-                <Table.ColumnHeaderCell>S/N</Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell>Full Name</Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell>Country</Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell>DOB</Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell>Phone no</Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell>Status</Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell>Action</Table.ColumnHeaderCell>
+                <Table.ColumnHeaderCell className='font-normal'>
+                  <input
+                    type='checkbox'
+                    checked={
+                      selectedRows.size === currentCourses.length &&
+                      currentCourses.length > 0
+                    }
+                    onChange={handleSelectAll}
+                    className='rounded'
+                  />
+                </Table.ColumnHeaderCell>
+                <Table.ColumnHeaderCell className='font-normal'>
+                  S/N
+                </Table.ColumnHeaderCell>
+                <Table.ColumnHeaderCell className='font-normal'>
+                  Full Name
+                </Table.ColumnHeaderCell>
+                <Table.ColumnHeaderCell className='font-normal'>
+                  Country
+                </Table.ColumnHeaderCell>
+                <Table.ColumnHeaderCell className='font-normal'>
+                  Dob
+                </Table.ColumnHeaderCell>
+                <Table.ColumnHeaderCell className='font-normal'>
+                  Phone Number
+                </Table.ColumnHeaderCell>
+               
+                <Table.ColumnHeaderCell className='font-normal'>
+                  Status
+                </Table.ColumnHeaderCell>
+                <Table.ColumnHeaderCell className='font-normal'>
+                  Action
+                </Table.ColumnHeaderCell>
               </Table.Row>
             </Table.Header>
 
             <Table.Body>
               {students.map((item, index) => (
                 <Table.Row key={item.id}>
-                  <Table.RowHeaderCell>{index + 1}</Table.RowHeaderCell>
                   <Table.Cell>
-                    <div className='flex gap-2 items-center'>
-                      <img src={item.img} className='w-8 h-8 rounded-full' />
-                      <span>{item.name}</span>
-                    </div>
+                    <input
+                      type='checkbox'
+                      checked={selectedRows.has(item.id)}
+                      onChange={() => handleSelectRow(item.id)}
+                      className='rounded'
+                    />
+                  </Table.Cell>
+                  <Table.RowHeaderCell>
+                    {startIndex + index + 1}
+                  </Table.RowHeaderCell>
+                  <Table.Cell>
+                    <Link
+                      to='/Course'
+                      className='text-[#FF6500] hover:text-[#FF6500]/80 hover:underline cursor-pointer'
+                    >
+                      {item.name}
+                    </Link>
                   </Table.Cell>
                   <Table.Cell>{item.country}</Table.Cell>
                   <Table.Cell>{item.Dob}</Table.Cell>
 
                   <Table.Cell>{item.phone}</Table.Cell>
+                 
+
                   <Table.Cell>
                     {item.status == 'active' ? (
                       <div className=' bg-[#009B4D1A] w-[100px] p-1  rounded-3xl'>
-                        <p className='text-center text-[#01857C] '>
+                        <p className='text-center text-[#01857C] capitalize'>
                           {item.status}
                         </p>
                       </div>
                     ) : (
                       <div className='bg-red-300  w-[100px] p-1  rounded-3xl'>
-                        <p className='text-center text-[#FF0000] '>
+                        <p className='text-center text-[#FF0000] capitalize'>
                           {item.status}
                         </p>
                       </div>
@@ -206,20 +289,90 @@ function ManageParents() {
             </Table.Body>
           </Table.Root>
         </div>
-        <div className='my-4 flex justify-between items-center'>
-          <h4 className='text-[#373737]'>0 of 1 row(s) selected.</h4>
-          <div className='flex gap-3'>
-            <button className='border py-2 px-4 rounded border-[#dddddd] text-[#373737]'>
-              {' '}
-              Previous
-            </button>
 
-            <button className='border py-2 px-4 rounded border-[#dddddd] text-[#373737]'>
-              {' '}
+        {/* Pagination Section */}
+        <div className='mt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-lg'>
+          <h4 className='text-[#373737] font-medium'>
+            {selectedRows.size} of {students.length} row(s) selected.
+          </h4>
+          <div className='flex gap-3 items-center'>
+            <span className='text-sm text-[#373737]'>
+              Page {currentPage} of {totalPages}
+            </span>
+            <Button
+              variant='outline'
+              onClick={handlePrevious}
+              disabled={currentPage === 1}
+            >
+              Previous
+            </Button>
+            <Button
+              variant='outline'
+              onClick={handleNext}
+              disabled={currentPage === totalPages}
+            >
               Next
-            </button>
+            </Button>
           </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
     </div>
   );

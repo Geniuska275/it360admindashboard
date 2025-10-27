@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IoEllipsisVertical } from 'react-icons/io5';
 import { TbEyeStar } from 'react-icons/tb';
 import { CiEdit } from 'react-icons/ci';
@@ -12,9 +12,27 @@ import { IoCameraOutline } from 'react-icons/io5';
 
 function ActionBars({ type }) {
   const [show, setShow] = useState(false);
-
+  const menuRef = useRef(null);
+ 
+   // Close menu when clicking outside
+   useEffect(() => {
+     function handleClickOutside(event) {
+       if (menuRef.current && !menuRef.current.contains(event.target)) {
+         setShow(false);
+       }
+     }
+ 
+     if (show) {
+       document.addEventListener('mousedown', handleClickOutside);
+     }
+ 
+     return () => {
+       document.removeEventListener('mousedown', handleClickOutside);
+     };
+   }, [show]);
+ 
   return (
-    <div>
+    <div  className='relative' ref={menuRef}>
       <div
         className='bg-[#E0E0E0] w-8 h-8 rounded flex justify-center items-center'
         onClick={() => setShow(!show)}
@@ -22,7 +40,7 @@ function ActionBars({ type }) {
         <IoEllipsisVertical />
       </div>
       {show && (
-        <div className='w-[180px] h-[100px] p-4 z-10 shadow-md bg-white rounded-xl '>
+        <div className='absolute right-0 top-10 w-[180px] min-h-[120px] p-2 z-[99999] shadow-xl bg-white rounded-xl border border-[#dddddd] '>
           <Link to={type == 'Admin' ? '/Administrator' : '/Parent-Profile'}>
             <div className='flex items-center my-1 gap-2'>
               <TbEyeStar className='text-xl' />
@@ -42,20 +60,20 @@ function ActionBars({ type }) {
                 <h2 className='font-bold'>
                   Are you sure you want to deactivate this student?
                 </h2>
-                <AlertDialog.Cancel>
-                  <IoCloseCircleSharp className='text-xl' />
-                </AlertDialog.Cancel>
-              </div>
+                </div>
               <h3 className='text-md mx-5'>
                 This will restrict their access to all courses and features
                 until reactivated.
               </h3>
 
               <div className='flex gap-2 mt-2 ml-[500px]'>
+                 <AlertDialog.Cancel>
                 <button className='border py-2 px-4 rounded-xl border-[#dddddd] text-[#373737]'>
                   {' '}
                   Cancel
                 </button>
+                </AlertDialog.Cancel>
+
 
                 <button className='border  bg-black py-2 px-4 rounded-xl border-[#dddddd] text-white'>
                   {' '}
