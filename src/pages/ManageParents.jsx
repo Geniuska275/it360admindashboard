@@ -7,7 +7,7 @@ import { MdOutlineSpaceDashboard } from 'react-icons/md';
 import ActionBars from '../components/ActionBars';
 import { Link } from 'react-router-dom';
 import CourseBar from '@/components/CourseBar';
-import { useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 
 
@@ -201,17 +201,12 @@ function ManageParents() {
             </Select.Root>
           </div>
         </div>
-<<<<<<< HEAD
-        {/* Table Section */}
-        <div className='bg-white rounded-lg shadow-sm border border-[#dddddd] overflow-hidden'>
-=======
 
        
 
 
 
                <div className='bg-white rounded-lg shadow-sm border border-[#dddddd] overflow-hidden'>
->>>>>>> 39ea2f7d49f2ac1791ff133a9ceab7980f35909f
           <Table.Root variant='surface' className='[&_td]:py-4 [&_th]:py-4'>
             <Table.Header>
               <Table.Row>
@@ -219,13 +214,8 @@ function ManageParents() {
                   <input
                     type='checkbox'
                     checked={
-<<<<<<< HEAD
-                      selectedRows.size === currentCourses.length &&
-                      currentCourses.length > 0
-=======
                       selectedRows.size === students.length &&
                       students.length > 0
->>>>>>> 39ea2f7d49f2ac1791ff133a9ceab7980f35909f
                     }
                     onChange={handleSelectAll}
                     className='rounded'
@@ -235,30 +225,17 @@ function ManageParents() {
                   S/N
                 </Table.ColumnHeaderCell>
                 <Table.ColumnHeaderCell className='font-normal'>
-<<<<<<< HEAD
-                  Full Name
-=======
                   FullName
->>>>>>> 39ea2f7d49f2ac1791ff133a9ceab7980f35909f
                 </Table.ColumnHeaderCell>
                 <Table.ColumnHeaderCell className='font-normal'>
                   Country
                 </Table.ColumnHeaderCell>
                 <Table.ColumnHeaderCell className='font-normal'>
-<<<<<<< HEAD
-                  Dob
-                </Table.ColumnHeaderCell>
-                <Table.ColumnHeaderCell className='font-normal'>
-                  Phone Number
-                </Table.ColumnHeaderCell>
-               
-=======
                 DOB
                 </Table.ColumnHeaderCell>
                 <Table.ColumnHeaderCell className='font-normal'>
                   Phone NO
                 </Table.ColumnHeaderCell>
->>>>>>> 39ea2f7d49f2ac1791ff133a9ceab7980f35909f
                 <Table.ColumnHeaderCell className='font-normal'>
                   Status
                 </Table.ColumnHeaderCell>
