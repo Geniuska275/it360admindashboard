@@ -6,45 +6,16 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { MdOutlineSpaceDashboard } from 'react-icons/md';
 import ActionBars from '../components/ActionBars';
 import { Link } from 'react-router-dom';
-import Button from '@/components/Button';
+import CourseBar from '@/components/CourseBar';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+
+
+
 function ManageParents() {
-    const [selectedRows, setSelectedRows] = useState(new Set());
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
-
-
-    
-    // Row selection handlers
-    const handleSelectRow = courseId => {
-      const newSelected = new Set(selectedRows);
-      if (newSelected.has(courseId)) {
-        newSelected.delete(courseId);
-      } else {
-      newSelected.add(courseId);
-    }
-    setSelectedRows(newSelected);
-  };
-  
-  const handleSelectAll = () => {
-    if (selectedRows.size === currentCourses.length) {
-      setSelectedRows(new Set());
-    } else {
-      setSelectedRows(new Set(currentCourses.map(course => course.id)));
-    }
-  };
-  
-  const handlePrevious = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-  
+  const [selectedRows, setSelectedRows] = useState(new Set());
+      const [currentPage, setCurrentPage] = useState(1);
+      const itemsPerPage = 2;
   const students = [
     {
       id: 1,
@@ -129,11 +100,44 @@ function ManageParents() {
     },
   ];
 
-  // Pagination logic
-const totalPages = Math.ceil(students.length / itemsPerPage);
-const startIndex = (currentPage - 1) * itemsPerPage;
-const endIndex = startIndex + itemsPerPage;
-const currentCourses = students.slice(startIndex, endIndex);
+    // Pagination logic
+  const totalPages = Math.ceil(students.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentCourses = students.slice(startIndex, endIndex);
+
+  // Row selection handlers
+  const handleSelectRow = courseId => {
+    const newSelected = new Set(selectedRows);
+    if (newSelected.has(courseId)) {
+      newSelected.delete(courseId);
+    } else {
+      newSelected.add(courseId);
+    }
+    setSelectedRows(newSelected);
+  };
+
+  const handleSelectAll = () => {
+    if (selectedRows.size === currentCourses.length) {
+      setSelectedRows(new Set());
+    } else {
+      setSelectedRows(new Set(currentCourses.map(course => course.id)));
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+
   return (
     <div>
       <div className=' bg-white  py-4 shadow-md w-full top-0 sticky z-10'>
@@ -197,8 +201,17 @@ const currentCourses = students.slice(startIndex, endIndex);
             </Select.Root>
           </div>
         </div>
+<<<<<<< HEAD
         {/* Table Section */}
         <div className='bg-white rounded-lg shadow-sm border border-[#dddddd] overflow-hidden'>
+=======
+
+       
+
+
+
+               <div className='bg-white rounded-lg shadow-sm border border-[#dddddd] overflow-hidden'>
+>>>>>>> 39ea2f7d49f2ac1791ff133a9ceab7980f35909f
           <Table.Root variant='surface' className='[&_td]:py-4 [&_th]:py-4'>
             <Table.Header>
               <Table.Row>
@@ -206,8 +219,13 @@ const currentCourses = students.slice(startIndex, endIndex);
                   <input
                     type='checkbox'
                     checked={
+<<<<<<< HEAD
                       selectedRows.size === currentCourses.length &&
                       currentCourses.length > 0
+=======
+                      selectedRows.size === students.length &&
+                      students.length > 0
+>>>>>>> 39ea2f7d49f2ac1791ff133a9ceab7980f35909f
                     }
                     onChange={handleSelectAll}
                     className='rounded'
@@ -217,18 +235,30 @@ const currentCourses = students.slice(startIndex, endIndex);
                   S/N
                 </Table.ColumnHeaderCell>
                 <Table.ColumnHeaderCell className='font-normal'>
+<<<<<<< HEAD
                   Full Name
+=======
+                  FullName
+>>>>>>> 39ea2f7d49f2ac1791ff133a9ceab7980f35909f
                 </Table.ColumnHeaderCell>
                 <Table.ColumnHeaderCell className='font-normal'>
                   Country
                 </Table.ColumnHeaderCell>
                 <Table.ColumnHeaderCell className='font-normal'>
+<<<<<<< HEAD
                   Dob
                 </Table.ColumnHeaderCell>
                 <Table.ColumnHeaderCell className='font-normal'>
                   Phone Number
                 </Table.ColumnHeaderCell>
                
+=======
+                DOB
+                </Table.ColumnHeaderCell>
+                <Table.ColumnHeaderCell className='font-normal'>
+                  Phone NO
+                </Table.ColumnHeaderCell>
+>>>>>>> 39ea2f7d49f2ac1791ff133a9ceab7980f35909f
                 <Table.ColumnHeaderCell className='font-normal'>
                   Status
                 </Table.ColumnHeaderCell>
@@ -263,8 +293,8 @@ const currentCourses = students.slice(startIndex, endIndex);
                   <Table.Cell>{item.country}</Table.Cell>
                   <Table.Cell>{item.Dob}</Table.Cell>
 
-                  <Table.Cell>{item.phone}</Table.Cell>
                  
+                  <Table.Cell>{item.phone}</Table.Cell>
 
                   <Table.Cell>
                     {item.status == 'active' ? (
@@ -282,7 +312,7 @@ const currentCourses = students.slice(startIndex, endIndex);
                     )}
                   </Table.Cell>
                   <Table.Cell>
-                    <ActionBars />
+                    <ActionBars/>
                   </Table.Cell>
                 </Table.Row>
               ))}
@@ -315,63 +345,6 @@ const currentCourses = students.slice(startIndex, endIndex);
             </Button>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       </div>
     </div>
