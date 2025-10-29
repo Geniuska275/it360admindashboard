@@ -14,6 +14,7 @@ import CreateCourse from './pages/CreateCourse.jsx';
 import CreateCourseModules from './pages/CreateCourseModules.jsx';
 import CreateAssignment from './pages/CraeteAssignment.jsx';
 import GradeAssignment from './pages/GradeAssignment.jsx';
+import GradeSubmission from './pages/GradeSubmission.jsx';
 import Announcements from './pages/Announcements.jsx';
 import Notification from './pages/Notification.jsx';
 import Message from './pages/Message.jsx';
@@ -46,6 +47,7 @@ function App() {
             <Route path='/create-course-modules' element={<CreateCourseModules />} />
             <Route path='/Create-Assignment' element={<CreateAssignment />} />
             <Route path='/Grade-Assignments' element={<GradeAssignment />} />
+            <Route path='/grade-submission' element={<GradeSubmission />} />
             <Route path='/Announcement' element={<Announcements />} />
 
             <Route path='/Notification' element={<Notification />} />

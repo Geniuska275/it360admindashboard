@@ -5,10 +5,11 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AddModuleDialog from '@/components/Course/modules/AddModuleDialog';
+import DotsIcon from '@/components/icons/DotsIcon';
 
 function CreateCourseModules() {
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(2); 
   const [modules, setModules] = useState([]);
   const [isAddModuleDialogOpen, setIsAddModuleDialogOpen] = useState(false);
 
@@ -148,14 +149,7 @@ function CreateCourseModules() {
                 <div className="mb-6">
                   <div className="bg-white rounded-xl p-4 border border-gray-200 flex items-center justify-between">
                     <h4 className="text-lg font-semibold text-primary">{module.title}</h4>
-                    <svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M7.9959 7.5H8.00488" stroke="#828282" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M7.99981 1.5H8.00879" stroke="#828282" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M13.9998 7.5H14.0088" stroke="#828282" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M13.9998 1.5H14.0088" stroke="#828282" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M1.99981 7.5H2.00879" stroke="#828282" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M1.99981 1.5H2.00879" stroke="#828282" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <DotsIcon />
                   </div>
                 </div>
               </div>
