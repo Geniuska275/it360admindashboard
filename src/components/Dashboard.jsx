@@ -9,6 +9,7 @@ import CourseChart from './Shared/CourseChart';
 import Example from './Shared/Example';
 import { FaStar } from 'react-icons/fa6';
 import Header from './Header';
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
   const courses = [
@@ -161,7 +162,9 @@ function Dashboard() {
       <Header />
       <div className='flex justify-between items-center py-4 px-4'>
         <h1 className='font-bold'>Dashboard</h1>
+        <Link to="/Create-Course">
         <Buttons>Add New Course</Buttons>
+        </Link>
       </div>
 
       <div className='flex justify-between items-center mx-4'>
