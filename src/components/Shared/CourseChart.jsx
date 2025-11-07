@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Bar,
   BarChart,
@@ -10,6 +10,13 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import Buttons from '../Buttons';
 const data = [
   {
@@ -87,11 +94,24 @@ const data = [
 ];
 
 function CourseChart() {
+   const [selectedTime, setSelectedTime] = useState('');
   return (
     <div className='bg-white h-[30rem] mt-5 p-4 rounded-sm mx-4 border border-gray-200'>
       <div className='flex justify-between items-center mx-5 my-4'>
         <strong>Courses</strong>
-        <Buttons>Yearly</Buttons>
+                  <div >
+                    <Select value={selectedTime} onValueChange={setSelectedTime}> 
+                      <SelectTrigger className="w-full rounded-sm h-10 bg-white">
+                        <SelectValue placeholder="Select Duration" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="course-1">Yearly</SelectItem>
+                        <SelectItem value="course-2">Monthly</SelectItem>
+                        <SelectItem value="course-3">Weekly</SelectItem>
+                        <SelectItem value="course-4">Daily</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
       </div>
 
       <ResponsiveContainer width='100%' height='85%'>
