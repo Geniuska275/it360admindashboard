@@ -233,7 +233,7 @@ function Dashboard() {
               </div>
               <div className=''>
                 <h1 className='text-md'>{item.title}</h1>
-                <p className='text-base text-sm text-gray-300'>{item.time}</p>
+                <p className='text-base text-sm text-[#9498A3]'>{item.time}</p>
               </div>
             </div>
           ))}
