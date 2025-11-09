@@ -60,11 +60,11 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     label: 'Grade Assignments/Quizzes',
     path: '/Grade-Assignments',
   },
-  {
-    key: 'Announcement',
-    label: 'Announcement',
-    path: '/Announcement',
-  },
+  // {
+  //   key: 'Announcement',
+  //   label: 'Announcement',
+  //   path: '/Announcement',
+  // },
   {
     key: 'Notification',
     label: 'Notification',

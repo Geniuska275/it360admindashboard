@@ -16,13 +16,14 @@ import CreateAssignment from './pages/CraeteAssignment.jsx';
 import GradeAssignment from './pages/GradeAssignment.jsx';
 import GradeSubmission from './pages/GradeSubmission.jsx';
 import Announcements from './pages/Announcements.jsx';
-import Notification from './pages/Notification.jsx';
+
 import Message from './pages/Message.jsx';
 import StudentProfile from './pages/StudentProfile.jsx';
 import ParentProfile from './pages/ParentProfile.jsx';
 import Instructor from './pages/Instructor.jsx';
 import AdminStrator from './pages/Administrator.jsx';
 import Course from './pages/course.jsx';
+import Notification from './pages/Notification';
 
 function App() {
   return (
@@ -50,9 +51,11 @@ function App() {
             <Route path='/grade-submission' element={<GradeSubmission />} />
             <Route path='/Announcement' element={<Announcements />} />
 
-            <Route path='/Notification' element={<Notification />} />
+            <Route path='/Notification' element={<Notification/>} />
 
             <Route path='/Message-System' element={<Message />} />
+         
+
           </Route>
         </Routes>
         <Routes>
