@@ -24,6 +24,7 @@ import Instructor from './pages/Instructor.jsx';
 import AdminStrator from './pages/Administrator.jsx';
 import Course from './pages/course.jsx';
 import Notification from './pages/Notification';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -52,6 +53,8 @@ function App() {
             <Route path='/Announcement' element={<Announcements />} />
 
             <Route path='/Notification' element={<Notification/>} />
+            <Route path='/Profile' element={<Profile/>} />
+
 
             <Route path='/Message-System' element={<Message />} />
          

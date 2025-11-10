@@ -93,6 +93,7 @@ function Sidebar() {
       </div>
 
       {/* super admin */}
+      <Link to="/Profile">
       <div className='flex items-center gap-2 mx-1 mt-auto'>
         <img src={logo} />
         <div>
@@ -100,6 +101,7 @@ function Sidebar() {
           <p className='text-sm text-[#828282]'>m@example.com</p>
         </div>
       </div>
+      </Link>
     </div>
   );
 }
